@@ -17,18 +17,15 @@ namespace SoccerStats
             var file = new FileInfo(fileName);
             if (file.Exists)
             {
-                var reader = new StreamReader(file.FullName);
 
-                try
+                // Как понимаю используем директиву юзинг для того чтобы показать длительность использования
+                // переменной и задиспозить ее после того как код в скобках будет выполнен
+                using (var reader = new StreamReader(file.FullName))
                 {
                     Console.SetIn(reader);
                     Console.WriteLine(Console.ReadLine());
                 }
-                finally // чтобы гарантировать закрытие ридера при эксепшене
-                {
-                    reader.Close(); // Должен где-то ссылаться на IDisposable чтобы можно было на прямую удалять
-                }
-                
+                                
             }
 
             
