@@ -13,29 +13,18 @@ namespace SoccerStats
         {
             string currentDirectory = Directory.GetCurrentDirectory();
             DirectoryInfo directory = new DirectoryInfo(currentDirectory);
-            var fileName = Path.Combine(directory.FullName, "data.txt");
-            var file = new FileInfo(fileName);
-            if (file.Exists)
-            {
-
-                // Как понимаю используем директиву юзинг для того чтобы показать длительность использования
-                // переменной и задиспозить ее после того как код в скобках будет выполнен
-                using (var reader = new StreamReader(file.FullName))
-                {
-                    Console.SetIn(reader);
-                    Console.WriteLine(Console.ReadLine());
-                }
-                                
-            }
-
+            var fileName = Path.Combine(directory.FullName, "SoccerGameResults.csv");
+            var fileContents = ReadFile(fileName);
+            Console.WriteLine(fileContents);
             
-            /* --** Reading files from the directory **--
-            var files = directory.GetFiles("*.txt");
-            foreach(var file in files)
+        }
+
+        public static string ReadFile(string fileName)
+        {
+            using (var reader = new StreamReader(fileName))
             {
-                Console.WriteLine(file.Name);
+                return reader.ReadToEnd();
             }
-            */
         }
     }
 }
