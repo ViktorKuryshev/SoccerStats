@@ -18,7 +18,17 @@ namespace SoccerStats
             if (file.Exists)
             {
                 var reader = new StreamReader(file.FullName);
-                Console.SetIn(reader);
+
+                try
+                {
+                    Console.SetIn(reader);
+                    Console.WriteLine(Console.ReadLine());
+                }
+                finally // чтобы гарантировать закрытие ридера при эксепшене
+                {
+                    reader.Close(); // Должен где-то ссылаться на IDisposable чтобы можно было на прямую удалять
+                }
+                
             }
 
             
