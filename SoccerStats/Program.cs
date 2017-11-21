@@ -32,10 +32,13 @@ namespace SoccerStats
             using (var reader = new StreamReader(fileName))
             {
                 string line = "";
+                reader.ReadLine(); //чтобы переместить позицию ридера на вторую строку с которой и начинаются данные
                 while ((line = reader.ReadLine())!=null)
                 {
-                    string[] lines = line.Split(',');
-                    soccerResults.Add(lines);
+                    var gameResult = new GameResult();
+                    string[] values = line.Split(',');
+                    gameResult.GameDate = DateTime.Parse(values[0]);
+                    soccerResults.Add(values);
                 }
             }
             return soccerResults;
