@@ -31,10 +31,11 @@ namespace SoccerStats
             var soccerResults = new List<string[]>();
             using (var reader = new StreamReader(fileName))
             {
-                while(reader.Peek() > -1)
+                string line = "";
+                while ((line = reader.ReadLine())!=null)
                 {
-                    string[] line = reader.ReadLine().Split(',');
-                    soccerResults.Add(line);
+                    string[] lines = line.Split(',');
+                    soccerResults.Add(lines);
                 }
             }
             return soccerResults;
