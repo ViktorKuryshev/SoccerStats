@@ -37,7 +37,12 @@ namespace SoccerStats
                 {
                     var gameResult = new GameResult();
                     string[] values = line.Split(',');
-                    gameResult.GameDate = DateTime.Parse(values[0]);
+                    
+                    DateTime gameDate;
+                    if(DateTime.TryParse(values[0], out gameDate)) //Проверяем правильные ли данные TryParse возвращает True/False
+                    {
+                        gameResult.GameDate = gameDate;
+                    }
                     soccerResults.Add(values);
                 }
             }
