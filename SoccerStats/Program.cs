@@ -51,7 +51,35 @@ namespace SoccerStats
 						gameResult.HomeOrAway = homeOrAway;
 					}
 
-                    soccerResults.Add(gameResult);
+					int parseInt;
+					if(int.TryParse(values[3], out parseInt))
+					{
+						gameResult.Goals = parseInt;
+					}
+
+					if (int.TryParse(values[4], out parseInt))
+					{
+						gameResult.GoalAttempts = parseInt;
+					}
+
+					if (int.TryParse(values[5], out parseInt))
+					{
+						gameResult.ShotsOnGoal = parseInt;
+					}
+
+					if (int.TryParse(values[6], out parseInt))
+					{
+						gameResult.ShotsOffGoal = parseInt;
+					}
+
+					double posessionPercent;
+					if(double.TryParse(values[7], out posessionPercent))
+					{
+						gameResult.PosessionPercent = posessionPercent;
+					}
+
+
+					soccerResults.Add(gameResult);
                 }
             }
             return soccerResults;
