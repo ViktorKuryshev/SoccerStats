@@ -16,6 +16,14 @@ namespace SoccerStats
 		public int ShotsOnGoal { get; set; }
 		public int ShotsOffGoal { get; set; }
 		public double PosessionPercent { get; set; }
+		public double ConversionRate
+		{
+			get
+			{
+				return (double)Goals / (double)GoalAttempts;
+			}
+		}
+			
 	}
 
 	public enum HomeOrAway //Can change type for example by doing so : byte

@@ -78,7 +78,7 @@ namespace SoccerStats
 						gameResult.PosessionPercent = posessionPercent;
 					}
 
-
+					
 					soccerResults.Add(gameResult);
                 }
             }
